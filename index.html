@@ -1,130 +1,220 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Moreno's Daily Picks</title>
-    <meta
-      name="description"
-      content="Daily picks with smart selection, odds tracking, and form creation."
-    />
-    <link rel="stylesheet" href="./assets/styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <div class="brand">Moreno's Daily Picks</div>
-        <button class="nav-btn">Daily Card</button>
-      </div>
-    </header>
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MORENO'S RECOMMENDATIONS - המלצות ווינר יומיות</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
 
-    <main class="container page">
-      <section class="hero">
-        <div>
-          <p class="eyebrow">Today's plays</p>
-          <h1>Build a winning card</h1>
-        </div>
-        <div class="summary-box">
-          <div>
-            <span class="label">Pick</span>
-            <input id="pick" type="text" readonly value="" placeholder="Selected picks appear here" />
-          </div>
-          <div>
-            <span class="label">Odds</span>
-            <strong id="odds">-</strong>
-          </div>
-        </div>
-      </section>
+    body {
+      background: #0a0a0a;
+      color: #fff;
+      direction: rtl;
+    }
 
-      <section class="game-board">
-        <div class="game-card" data-game-id="g001" data-title="Barcelona vs Real Madrid" data-odds="1.85">
-          <div class="game-head">
-            <span class="sport-tag">Soccer</span>
-            <span class="game-time">21:00</span>
-          </div>
-          <h3>Barcelona vs Real Madrid</h3>
-          <div class="pick-row">
-            <label><input type="radio" name="pick-g001" value="Barcelona" checked /> Barcelona</label>
-            <label><input type="radio" name="pick-g001" value="Draw" /> Draw</label>
-            <label><input type="radio" name="pick-g001" value="Real Madrid" /> Real Madrid</label>
-          </div>
-          <div class="meta-row">
-            <span>Odds</span>
-            <span class="odds-value">1.85</span>
-          </div>
-          <div class="system-row">
-            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
-          </div>
-        </div>
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: linear-gradient(180deg, #111 0%, #000 100%);
+    }
 
-        <div class="game-card" data-game-id="g002" data-title="Lakers vs Celtics" data-odds="2.10">
-          <div class="game-head">
-            <span class="sport-tag">Basketball</span>
-            <span class="game-time">19:30</span>
-          </div>
-          <h3>Lakers vs Celtics</h3>
-          <div class="pick-row">
-            <label><input type="radio" name="pick-g002" value="Lakers" checked /> Lakers</label>
-            <label><input type="radio" name="pick-g002" value="Celtics" /> Celtics</label>
-          </div>
-          <div class="meta-row">
-            <span>Odds</span>
-            <span class="odds-value">2.10</span>
-          </div>
-          <div class="system-row">
-            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
-          </div>
-        </div>
+    .logo {
+      font-size: 32px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
 
-        <div class="game-card" data-game-id="g003" data-title="Milan vs Inter" data-odds="1.70">
-          <div class="game-head">
-            <span class="sport-tag">Soccer</span>
-            <span class="game-time">20:45</span>
-          </div>
-          <h3>Milan vs Inter</h3>
-          <div class="pick-row">
-            <label><input type="radio" name="pick-g003" value="Milan" checked /> Milan</label>
-            <label><input type="radio" name="pick-g003" value="Inter" /> Inter</label>
-          </div>
-          <div class="meta-row">
-            <span>Odds</span>
-            <span class="odds-value">1.70</span>
-          </div>
-          <div class="system-row">
-            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
-          </div>
-        </div>
+    .logo span {
+      color: #e60000;
+    }
 
-        <div class="game-card" data-game-id="g004" data-title="Toulouse vs Nantes" data-odds="2.40">
-          <div class="game-head">
-            <span class="sport-tag">Soccer</span>
-            <span class="game-time">18:00</span>
-          </div>
-          <h3>Toulouse vs Nantes</h3>
-          <div class="pick-row">
-            <label><input type="radio" name="pick-g004" value="Toulouse" checked /> Toulouse</label>
-            <label><input type="radio" name="pick-g004" value="Nantes" /> Nantes</label>
-          </div>
-          <div class="meta-row">
-            <span>Odds</span>
-            <span class="odds-value">2.40</span>
-          </div>
-          <div class="system-row">
-            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
-          </div>
-        </div>
-      </section>
+    .badge {
+      background: #00ff88;
+      color: #000;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 13px;
+      margin: 15px 0;
+      display: inline-block;
+    }
 
-      <section class="selection-panel">
-        <h2>Selected games</h2>
-        <ul id="games-list" aria-live="polite"></ul>
-      </section>
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
 
-      <form id="system-form" method="post" action="#">
-        <button type="submit">Create system</button>
-      </form>
-    </main>
+    .stat {
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 12px;
+      min-width: 100px;
+      border: 1px solid #333;
+    }
 
-    <script type="module" src="./assets/game-selection.js"></script>
-  </body>
+    .stat b {
+      font-size: 22px;
+      color: #00ff88;
+      display: block;
+    }
+
+    .card {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 25px;
+      max-width: 450px;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    .odds {
+      background: #e60000;
+      padding: 8px 18px;
+      border-radius: 8px;
+      font-weight: bold;
+      display: inline-block;
+      margin: 12px 0;
+      font-size: 18px;
+    }
+
+    .form {
+      max-width: 450px;
+      margin: 20px auto;
+      padding: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #333;
+      background: #222;
+      color: #fff;
+      margin-bottom: 12px;
+      font-size: 16px;
+      text-align: right;
+    }
+
+    .btn {
+      width: 100%;
+      background: #e60000;
+      color: #fff;
+      border: none;
+      padding: 16px;
+      border-radius: 30px;
+      font-size: 18px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: #ff1a1a;
+    }
+
+    .vip {
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #000;
+      padding: 20px;
+      border-radius: 16px;
+      max-width: 450px;
+      margin: 20px auto;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .reviews {
+      max-width: 450px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .review {
+      background: #1a1a1a;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      padding: 20px;
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 25px;
+      }
+
+      .stats {
+        gap: 10px;
+      }
+
+      .stat {
+        min-width: 90px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <div class="logo">MORENO'S <span>RECOMMENDATIONS</span></div>
+    <div class="badge">✅ 78% הצלחה בחודש האחרון</div>
+
+    <div class="stats">
+      <div class="stat"><b>124+</b> לקוחות VIP</div>
+      <div class="stat"><b>1.85</b> יחס ממוצע</div>
+      <div class="stat"><b>92%</b> לקוחות חוזרים</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <p>🏆 ליגת העל • היום 21:00</p>
+    <h2 style="margin:12px 0;">מכבי ת"א - מכבי חיפה</h2>
+    <p>מכבי ת"א מנצחת + מעל 1.5 שערים</p>
+    <div class="odds">יחס 1.85</div>
+    <p>
+      סיכוי הצלחה:
+      <span style="color:#00ff88; font-weight:bold;">78%</span>
+    </p>
+  </div>
+
+  <div class="vip">
+    👑 הצטרף ל-VIP<br>
+    רק 9.90₪ - קבל 3 המלצות ביום<br>
+    ביטול בכל רגע
+  </div>
+
+  <form class="form" onsubmit="alert('תודה! נשלח לך וואטסאפ'); return false;">
+    <input type="text" placeholder="שם מלא" required>
+    <input type="tel" placeholder="מספר וואטסאפ" required>
+    <button class="btn">קבל המלצה חינם עכשיו →</button>
+  </form>
+
+  <div class="reviews">
+    <div class="review">
+      ⭐⭐⭐⭐⭐ "הרווחתי 450₪ השבוע עם ההמלצות של מורנו" - דניאל, תל אביב
+    </div>
+    <div class="review">
+      ⭐⭐⭐⭐⭐ "סוף סוף מישהו שבאמת מבין כדורגל" - יוסי, חיפה
+    </div>
+  </div>
+
+  <p class="footer-note">
+    הימורים עלולים להיות ממכרים. שחק באחריות. 18+
+  </p>
+</body>
 </html>
