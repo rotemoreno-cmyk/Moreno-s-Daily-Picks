@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moreno's Daily Picks</title>
+    <meta
+      name="description"
+      content="Daily picks with smart selection, odds tracking, and form creation."
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand">Moreno's Daily Picks</div>
+        <button class="nav-btn">Daily Card</button>
+      </div>
+    </header>
+
+    <main class="container page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Today's plays</p>
+          <h1>Build a winning card</h1>
+        </div>
+        <div class="summary-box">
+          <div>
+            <span class="label">Pick</span>
+            <input id="pick" type="text" readonly value="" placeholder="Selected picks appear here" />
+          </div>
+          <div>
+            <span class="label">Odds</span>
+            <strong id="odds">-</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="game-board">
+        <div class="game-card" data-game-id="g001" data-title="Barcelona vs Real Madrid" data-odds="1.85">
+          <div class="game-head">
+            <span class="sport-tag">Soccer</span>
+            <span class="game-time">21:00</span>
+          </div>
+          <h3>Barcelona vs Real Madrid</h3>
+          <div class="pick-row">
+            <label><input type="radio" name="pick-g001" value="Barcelona" checked /> Barcelona</label>
+            <label><input type="radio" name="pick-g001" value="Draw" /> Draw</label>
+            <label><input type="radio" name="pick-g001" value="Real Madrid" /> Real Madrid</label>
+          </div>
+          <div class="meta-row">
+            <span>Odds</span>
+            <span class="odds-value">1.85</span>
+          </div>
+          <div class="system-row">
+            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
+          </div>
+        </div>
+
+        <div class="game-card" data-game-id="g002" data-title="Lakers vs Celtics" data-odds="2.10">
+          <div class="game-head">
+            <span class="sport-tag">Basketball</span>
+            <span class="game-time">19:30</span>
+          </div>
+          <h3>Lakers vs Celtics</h3>
+          <div class="pick-row">
+            <label><input type="radio" name="pick-g002" value="Lakers" checked /> Lakers</label>
+            <label><input type="radio" name="pick-g002" value="Celtics" /> Celtics</label>
+          </div>
+          <div class="meta-row">
+            <span>Odds</span>
+            <span class="odds-value">2.10</span>
+          </div>
+          <div class="system-row">
+            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
+          </div>
+        </div>
+
+        <div class="game-card" data-game-id="g003" data-title="Milan vs Inter" data-odds="1.70">
+          <div class="game-head">
+            <span class="sport-tag">Soccer</span>
+            <span class="game-time">20:45</span>
+          </div>
+          <h3>Milan vs Inter</h3>
+          <div class="pick-row">
+            <label><input type="radio" name="pick-g003" value="Milan" checked /> Milan</label>
+            <label><input type="radio" name="pick-g003" value="Inter" /> Inter</label>
+          </div>
+          <div class="meta-row">
+            <span>Odds</span>
+            <span class="odds-value">1.70</span>
+          </div>
+          <div class="system-row">
+            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
+          </div>
+        </div>
+
+        <div class="game-card" data-game-id="g004" data-title="Toulouse vs Nantes" data-odds="2.40">
+          <div class="game-head">
+            <span class="sport-tag">Soccer</span>
+            <span class="game-time">18:00</span>
+          </div>
+          <h3>Toulouse vs Nantes</h3>
+          <div class="pick-row">
+            <label><input type="radio" name="pick-g004" value="Toulouse" checked /> Toulouse</label>
+            <label><input type="radio" name="pick-g004" value="Nantes" /> Nantes</label>
+          </div>
+          <div class="meta-row">
+            <span>Odds</span>
+            <span class="odds-value">2.40</span>
+          </div>
+          <div class="system-row">
+            <label><input type="checkbox" class="system-checkbox" value="system" /> Add to system</label>
+          </div>
+        </div>
+      </section>
+
+      <section class="selection-panel">
+        <h2>Selected games</h2>
+        <ul id="games-list" aria-live="polite"></ul>
+      </section>
+
+      <form id="system-form" method="post" action="#">
+        <button type="submit">Create system</button>
+      </form>
+    </main>
+
+    <script type="module" src="./assets/game-selection.js"></script>
+  </body>
+</html>

@@ -1,0 +1,265 @@
+:root {
+  --bg: #0c1220;
+  --panel: #111a2d;
+  --panel-2: #151f34;
+  --card: #162238;
+  --card-border: rgba(255, 255, 255, 0.06);
+  --muted: #a7b3c9;
+  --text: #ecf3ff;
+  --accent: #6ee7ff;
+  --accent-2: #82d49b;
+  --danger: #ef4444;
+  --shadow: 0 15px 35px rgba(15, 23, 42, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: linear-gradient(180deg, #0c1220 0%, #101827 100%);
+  color: var(--text);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.container {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
+  background: rgba(12, 18, 32, 0.7);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.nav-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+}
+
+.brand {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.nav-btn {
+  background: linear-gradient(135deg, var(--accent), #bde9ff);
+  color: #0a1020;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.page {
+  padding: 2rem 0 4rem;
+}
+
+.hero {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 2rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 4vw, 4rem);
+}
+
+.summary-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: min(360px, 100%);
+  padding: 1rem 1.2rem;
+  background: rgba(17, 26, 45, 0.9);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+#pick {
+  width: 100%;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  color: var(--text);
+  padding: 0.8rem 0.9rem;
+}
+
+#odds {
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: var(--accent-2);
+}
+
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.game-card {
+  background: linear-gradient(180deg, rgba(22, 34, 56, 0.95), rgba(16, 24, 39, 0.95));
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1rem;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(110, 231, 255, 0.45);
+}
+
+.game-card.selected {
+  border-color: rgba(110, 231, 255, 0.85);
+  box-shadow: 0 0 0 1px rgba(110, 231, 255, 0.3), var(--shadow);
+}
+
+.game-head,
+.meta-row,
+.system-row,
+.pick-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.game-head {
+  margin-bottom: 0.5rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.sport-tag {
+  background: rgba(110, 231, 255, 0.1);
+  color: var(--accent);
+  border-radius: 999px;
+  padding: 0.25rem 0.55rem;
+}
+
+.game-card h3 {
+  margin: 0 0 0.9rem;
+  line-height: 1.2;
+}
+
+.pick-row {
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin-bottom: 1rem;
+  color: var(--muted);
+}
+
+.pick-row label,
+.system-row label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meta-row {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--card-border);
+  color: var(--muted);
+}
+
+.odds-value {
+  color: var(--accent-2);
+  font-weight: 800;
+}
+
+.system-row {
+  margin-top: 0.8rem;
+  justify-content: flex-start;
+}
+
+.selection-panel {
+  background: rgba(17, 26, 45, 0.9);
+  border: 1px solid var(--card-border);
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.selection-panel h2 {
+  margin-top: 0;
+}
+
+#games-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+#games-list li {
+  padding: 0.8rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--card-border);
+  color: var(--text);
+}
+
+#system-form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#system-form button {
+  background: linear-gradient(135deg, var(--accent-2), #7eeadf);
+  border: 0;
+  border-radius: 12px;
+  color: #09141d;
+  font-weight: 800;
+  padding: 0.9rem 1.4rem;
+  cursor: pointer;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .summary-box {
+    min-width: 0;
+  }
+}
