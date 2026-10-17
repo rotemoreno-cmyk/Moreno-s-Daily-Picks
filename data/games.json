@@ -1,0 +1,54 @@
+{
+  "updatedAt": "2026-10-17T00:00:00.000Z",
+  "games": [
+    {
+      "id": "g001",
+      "title": "Barcelona vs Real Madrid",
+      "sport": "Soccer",
+      "time": "21:00",
+      "odds": 1.85,
+      "pickOptions": [
+        { "label": "Barcelona", "value": "Barcelona" },
+        { "label": "Draw", "value": "Draw" },
+        { "label": "Real Madrid", "value": "Real Madrid" }
+      ],
+      "defaultPick": "Barcelona"
+    },
+    {
+      "id": "g002",
+      "title": "Lakers vs Celtics",
+      "sport": "Basketball",
+      "time": "19:30",
+      "odds": 2.1,
+      "pickOptions": [
+        { "label": "Lakers", "value": "Lakers" },
+        { "label": "Celtics", "value": "Celtics" }
+      ],
+      "defaultPick": "Lakers"
+    },
+    {
+      "id": "g003",
+      "title": "Milan vs Inter",
+      "sport": "Soccer",
+      "time": "20:45",
+      "odds": 1.7,
+      "pickOptions": [
+        { "label": "Milan", "value": "Milan" },
+        { "label": "Inter", "value": "Inter" }
+      ],
+      "defaultPick": "Milan"
+    },
+    {
+      "id": "g004",
+      "title": "Toulouse vs Nantes",
+      "sport": "Soccer",
+      "time": "18:00",
+      "odds": 2.4,
+      "pickOptions": [
+        { "label": "Toulouse", "value": "Toulouse" },
+        { "label": "Nantes", "value": "Nantes" }
+      ],
+      "defaultPick": "Toulouse"
+    }
+  ]
+}
